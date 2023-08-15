@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>NodeJs Chat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="chatbox">
+        <div class="title">NodeJs Chat</div>
+        <div class="subtitle">Envie sua mensagem...</div>
+        <div class="chat">
+          <input id="nome" class="inputnome" placeholder="Nome" />
+          <br />
+          <textarea
+            id="mensagem"
+            class="inputmensagem"
+            placeholder="Escreva sua mensagem aqui"
+          ></textarea>
+          <br />
+          <button id="enviar" class="inputenviar">Enviar</button>
+        </div>
+        <div id="mensagensrecebidas"></div>
+      </div>
+
+      <script>
+        const socket = io();
+        $(() => {
+          $("#enviar").click(() => {
+            sendMessage({
+              name: $("#nome").val() + " diz:",
+              message: $("#mensagem").val(),
+            });
+          });
+          getMessages();
+        });
+
+        socket.on("message", addMessages);
+
+        function addMessages(message) {
+          $("#mensagensrecebidas").append(`
+          <p class="autormensagem"> ${message.name} </h4>
+          <p class="mensagemautor">  ${message.message} </p>`);
+        }
+
+        function getMessages() {
+          $.get("http://localhost:3000/messages", (data) => {
+            data.forEach(addMessages);
+          });
+        }
+
+        function sendMessage(message) {
+          $.post("http://localhost:3000/messages", message);
+        }
+      </script>
+    </div>
+    <div class="copyright">Criado por Matheus Martins &copy; 2023</div>
+  </body>
+</html>

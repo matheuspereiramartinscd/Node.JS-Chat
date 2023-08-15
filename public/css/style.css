@@ -1,0 +1,89 @@
+*{
+    margin:0;
+    padding:0;
+  
+}
+
+.container,body,html{
+    background-color:black;
+}
+
+.chatbox{
+    background-color: #C1F7D6;
+    width: 800px;
+    height:350px;
+    text-align: center;
+    margin:0 auto;
+    margin-top:2%;
+    padding:20px;
+    border: solid black 1px;
+}
+
+.title{
+    font-size:40px;
+    padding:10px;
+}
+
+.chat{
+    padding:10px;
+}
+
+#nome{
+    width: 700px;
+    padding:3px;
+    margin:px;
+}
+
+#mensagem{
+    padding:3px;
+    width:700px;
+    height:170px;
+}
+
+.subtitle{
+    float:left;
+    font-size:20px;
+    padding-left:43px;
+
+}
+
+#enviar{
+    margin:5px;
+    padding:10px;
+    border: solid black 1px;
+    color: white;
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
+    background-color: greenyellow;
+}
+
+#mensagensrecebidas{
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    left:-19px;
+    width: 840px;
+    height:500px;
+    overflow-y:scroll;
+    text-align: left;
+    color: black;
+}
+
+.autormensagem{
+  
+    font-size:20px;
+    font-weight: bold;
+    padding-bottom:10px;
+}
+
+.mensagemautor{
+    font-size:15px;
+
+    padding-bottom:30px;
+}
+
+.copyright{
+    color: white;
+    position: absolute;
+    bottom:0;
+    right:0;
+}
